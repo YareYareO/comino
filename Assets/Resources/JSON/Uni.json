@@ -1,0 +1,33 @@
+{
+"startingpositions":[
+    {"Name":"Eingangsbereich", "PosX":0.0, "PosY":0.0, "PosZ":0.0, "RotY":0.0, "Room":"Eingangsbereich"}
+    ,
+    {"Name":"Zwischenraum_OG", "PosX":0.2, "PosY":4.3, "PosZ":10.0, "RotY":0.0, "Room":"Zwischenraum_OG"}
+],
+"targets":[
+    {"Name":"C119", "PosX":36.2, "PosY":4.3, "PosZ":10.0, "RotY":0.0, "Room":"C100_150"}
+    ,
+    {"Name":"Toilette_OG", "PosX":5.0, "PosY":4.3, "PosZ":12.0, "RotY":0.0, "Room":"Zwischenraum_OG"}
+    ,
+    {"Name":"Tisch_mit_Ausblick", "PosX":6.6, "PosY":0.0, "PosZ":20.0, "RotY":45.0, "Room":"Treppenraum_EG"}
+],
+"connections":[
+    {"Name":"EingangsbereichtoEB_Treppen", "PosX":0.0, "PosY":0.0, "PosZ":-5.8, "RotY":90.0, "Room1":"Eingangsbereich", "Room2":"EB_Treppen"}
+    ,
+    {"Name":"EB_TreppentoEB_OG", "PosX":-8.7, "PosY":4.3, "PosZ":-14.0, "RotY":0.0, "Room1":"EB_Treppen", "Room2":"EB_OG"}
+    ,
+    {"Name":"EingangsbereichtoZwischenraum_EG", "PosX":2.6, "PosY":0.0, "PosZ":0.0, "RotY":0.0, "Room1":"Eingangsbereich", "Room2":"Zwischenraum_EG"}
+    ,
+    {"Name":"EB_OGtoZwischenraum_OG", "PosX":2.6, "PosY":4.3, "PosZ":0.0, "RotY":0.0, "Room1":"EB_OG", "Room2":"Zwischenraum_OG"}
+    ,
+    {"Name":"Zwischenraum_EGtoTreppenraum_EG", "PosX":2.6, "PosY":0.0, "PosZ":18.0, "RotY":0.0, "Room1":"Zwischenraum_EG", "Room2":"Treppenraum_EG"}
+    ,
+    {"Name":"Zwischenraum_OGtoTreppenraum_OG", "PosX":1.6, "PosY":4.3, "PosZ":18.5, "RotY":0.0, "Room1":"Zwischenraum_OG", "Room2":"Treppenraum_OG"}
+    ,
+    {"Name":"Treppenraum_OGtoTreppenraum_Treppen", "PosX":2.6, "PosY":4.3, "PosZ":23, "RotY":0.0, "Room1":"Treppenraum_OG", "Room2":"Treppenraum_Treppen"}
+    ,
+    {"Name":"Treppenraum_EGtoTreppenraum_Treppen", "PosX":3.9, "PosY":0.0, "PosZ":21.8, "RotY":0.0, "Room1":"Treppenraum_EG", "Room2":"Treppenraum_Treppen"}
+    ,
+    {"Name":"Zwischenraum_OGtoC100_150", "PosX":5.2, "PosY":4.3, "PosZ":10.0, "RotY":90.0, "Room1":"Zwischenraum_OG", "Room2":"C100_150"}
+]
+}

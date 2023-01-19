@@ -1,0 +1,69 @@
+1. Session - 2. Dezember 2022
+
+Erreicht:
+AR Anwendung 
+    - statisch platzierte TargetObjekte werden sichtbar wenn man sich ihnen mit jeweils vorgelegten Radius nähert.
+    - TargetObjekte können mit einem Knopfdruck im Unity Editor erstellt werden.
+
+
+Limitierungen:
+    - Die Startposition muss fest sein, um die konsistente Positionierung der TargetObjekte sicherzustellen.
+    - Die Objekte werden nicht korrekt projiziert wenn der Raum schlecht beleuchtet ist.
+    - Bei mehreren Startpositionen muss die AR Session Origin dorthin verschoben werden + Rotation
+
+2. Session - 4. Dezember 2022
+
+Erreicht:
+Mit einer Textdatei können Punkte/Koordinaten eingelesen und in GameObjekte 
+verwandelt werden.
+ 
+Konzepte:
+- Während der Anwendung können im ähnlichen Prozess die Punkte entstehen
+- Die verschiedenen Startpositionen können auch in einer Textdatei eingelesen werden. Die Koordinaten der Punkte lassen sich dann anpassen Koord = Koord + neuerPunkt (so ungefähr)
+- Packages von Umgebungen (wie Bibliotheken oder Unis) lassen sich somit in EINER Textdatei beschreiben. Dies führt zu schnellen Downloads, bearbeitung und
+erstellung neuer Umgebungen. Jeder kann somit seine eigene Umgebung erstellen 
+(zukünftig eigenes tool?)
+
+Idee:
+- In der Implementierung eines intelligenten Pfeils werden wahrscheinlich 
+Pfadalgorithmen genutzt. Grüße an Professor Thiele.
+
+Nächste Session:
+- Während der Laufzeit Punkte erstellen 
+- Einen bestimmten Punkt in der Anwendung auswählen
+
+3. Session - 7. Dezember 2022
+
+Erreicht:
+- App startet jetzt mit einem Hauptmenü
+- Das Hauptmenu kann (bis jetzt sehr bedingt) den zugegriffenen Datensatz bestimmten
+- Alle Punkte des Datensatzes werden in der Laufzeit eingelesen und in Objekte umgewandelt
+- Der Code wurde verbessert (Verkürzt, Namespace eingerichtet, aufgeteilt [zukünftig mehr])
+- Die App funktioniert!!! 
+
+Ideen: 
+- Auf Papier festgehalten -> implizierte Implementierung von dem intelligenten Pfeil UND der ganzen Anwendung allgemein
+- JSON als mögliche langfristige alternative zu Textdateien.
+
+Nächste Session:
+- Pfeil zeigt auf projiziertes Objekt
+- Markiertes Objekt kann von mehreren ausgewählt werden
+- Blender (oder so) um den Pfeil zu modellieren
+
+4. Session - 8. Dezember 2022
+
+Erreicht:
+- Code verbessert
+- Workflow aufgeteilt auf die UI
+- bestimmter Punkt wird aufgeteilt
+- Pfeil implementiert. Das 3D Model ist fucked up, es muss irgendwie in Blender geflippt werden 
+  aber kein Plan wieso es nicht funktionieren will.
+- Algorithmus kann zukünftig leicht eingefügt werden
+- Syntax der Textdatei wurde auf Räume erweitert.
+
+Limitierungen:
+- Wenn man das Handy schnell schüttelt oder sich sehr schnell bewegt
+  werden die Objekte nicht mehr korrekt platziert.
+
+Nächste Session:
+- Optische Anpassungen 

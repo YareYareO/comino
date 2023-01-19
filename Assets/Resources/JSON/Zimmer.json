@@ -1,0 +1,31 @@
+{
+"startingpositions":[
+    {"Name":"hier", "PosX":0.0, "PosY":0.0, "PosZ":0.0, "RotY":0.0, "Room":"A"}
+],
+"targets":[
+    {"Name":"Schrank", "PosX":0.0, "PosY":0.0, "PosZ":-2.0, "RotY":0.0, "Room":"E"}
+    ,
+    {"Name":"Gemaelde", "PosX":-10.0, "PosY":0.0, "PosZ":-3.0, "RotY":90.0, "Room":"D"}
+    ,
+    {"Name":"Toilette", "PosX":-4.0, "PosY":0.0, "PosZ":-12.0, "RotY":90.0, "Room":"G"}
+],
+"connections":[
+    {"Name":"AtoC", "PosX":-2.0, "PosY":0.0, "PosZ":0.0, "RotY":90.0, "Room1":"A", "Room2":"C"}
+    ,
+    {"Name":"AtoE", "PosX":-2.0, "PosY":0.0, "PosZ":-2.0, "RotY":90.0, "Room1":"A", "Room2":"E"}
+    ,
+    {"Name":"EtoC", "PosX":-4.0, "PosY":0.0, "PosZ":-0.5, "RotY":0.0, "Room1":"E", "Room2":"C"}
+    ,
+    {"Name":"CtoB", "PosX":-6.0, "PosY":0.0, "PosZ":2.0, "RotY":90.0, "Room1":"B", "Room2":"C"}
+    ,
+    {"Name":"EtoD", "PosX":-4.0, "PosY":0.0, "PosZ":-6.0, "RotY":0.0, "Room1":"E", "Room2":"D"}
+    ,
+    {"Name":"DtoG", "PosX":-3.0, "PosY":0.0, "PosZ":-8.0, "RotY":0.0, "Room1":"D", "Room2":"G"}
+    ,
+    {"Name":"BtoD", "PosX":-7.0, "PosY":0.0, "PosZ":-5.0, "RotY":90.0, "Room1":"B", "Room2":"D"}
+    ,
+    {"Name":"BtoH", "PosX":-9.0, "PosY":0.0, "PosZ":-10.0, "RotY":0.0, "Room1":"B", "Room2":"H"}
+    ,
+    {"Name":"HtoG", "PosX":-4.0, "PosY":0.0, "PosZ":-11.0, "RotY":90.0, "Room1":"H", "Room2":"G"}
+]
+}
