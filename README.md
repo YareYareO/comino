@@ -10,9 +10,10 @@ Praesentation ist hier im Repository
 Die Kernfunktionen sind verfügbar und zwei kleine Datensätze sind eingebaut.
 
 Für die Zukunft: 
-Die aktuelle Code Architektur ist noch sehr chaotisch. Ich habe schon Pläne wie ich sie verbessere,
-und werde dies auch tun. 
 UI ist noch sehr unhübsch.
+
+Aenderungen:
+Code Architektur was die Daten für die Suche angeht verbessert. siehe Commit
 
 Der Rest wird sich noch ergeben.
 
