@@ -6,17 +6,18 @@ using UnityEngine.SceneManagement;
 public class SearchSceneManager : MonoBehaviour
 {
 
-    private static List<TargetHandler.Connection> path = new List<TargetHandler.Connection>();
     private static List<GameObject> gameobjectList = new List<GameObject>();
-    private static TargetHandler.StartingPosition startposition;
     private static GameObject lastObject;
-    public static GameObject ARCamera;
+    public GameObject ARCamera;
 
     private void Start() {
         if(ARCamera == null)
         {
             ARCamera = GameObject.Find("AR Camera");
         }
+
+        TargetHandler.StartingPosition startposition = SearchData.Startposition;
+        List<TargetHandler.Connection> path = SearchData.Path;
 
         foreach(TargetHandler.Connection c in path)
         {
@@ -63,12 +64,6 @@ public class SearchSceneManager : MonoBehaviour
             return null;
         }
         
-    }
-    //setter
-    public static void setPath(List<TargetHandler.Connection> p, TargetHandler.StartingPosition s)
-    {
-        path = p;
-        startposition = s;
     }
 
     private static void endSearch()

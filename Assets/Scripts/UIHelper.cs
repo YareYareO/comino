@@ -33,15 +33,15 @@ public class UIHelper : MonoBehaviour
     {
         if(whichValueToChange == 0)
         {
-            Goal.setChosenEnvironment(value);
+            SearchData.ChosenEnvironment = value;
         }
         else if(whichValueToChange == 1)
         {
-            Goal.setGoal(value);
+            SearchData.setTargetFromString(value);
         }
         else if(whichValueToChange == 2)
         {
-            Goal.setPosition(value);
+            SearchData.setStartPFromString(value);
         }
 
         GameObject newPanel = GameObject.Find("Panel");

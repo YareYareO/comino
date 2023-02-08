@@ -8,43 +8,17 @@ using System.Globalization;
 
 public class MainMenu : MonoBehaviour
 {
-
-    private static TargetHandler.Target chosenTarget;
-    private static TargetHandler.StartingPosition chosenPosition;
-    private static string wholeJson;
-
-    
     public void StartSearch()
     {
-        if(chosenTarget != null & wholeJson != null)
+        if(SearchData.Target != null & SearchData.Startposition != null & SearchData.PointList != null)
         {
-            TargetHandler.PointList data = getDataFromJson(wholeJson);
-            List<TargetHandler.Connection> quickestPath = HelperSearchAlgorithm.DominoAlgorithm(data.connections, chosenTarget, chosenPosition);
-            quickestPath.Reverse();
-            SendPoints(quickestPath); 
+            //TargetHandler.PointList data = getDataFromJson(wholeJson);
+            SearchData.Path = HelperSearchAlgorithm.DominoAlgorithm(SearchData.PointList.connections, SearchData.Target, SearchData.Startposition);
+            //quickestPath.Reverse();
+            //SendPoints(quickestPath); 
             SceneManager.LoadScene("Search");
         }
-    }
-
-    private TargetHandler.PointList getDataFromJson(string json)
-    {
-        TargetHandler.PointList ret = JsonUtility.FromJson<TargetHandler.PointList>(json);
-        return ret;
-    }
-
-    private void SendPoints(List<TargetHandler.Connection> path)
-    {
-
-        SearchSceneManager.setPath(path, chosenPosition);
-    } 
-
-    //setter
-    public static void setValues(TargetHandler.Target t, string json, TargetHandler.StartingPosition p)
-    {
-
-        chosenTarget = t;
-        wholeJson = json;
-        chosenPosition = p;
+        else { Debug.Log("Werte sind Null");}
     }
 
 }

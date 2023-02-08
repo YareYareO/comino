@@ -106,7 +106,7 @@ public class HelperSearchAlgorithm
         }
 
         List<TargetHandler.Connection> ret = makeConnectionsPath(path, connections, target);
-
+        ret.Reverse();
         return ret;
     }
 
@@ -180,6 +180,7 @@ public class HelperSearchAlgorithm
 
     private static TargetHandler.Connection convertTargetToConnec(TargetHandler.Target t)
     {
+        // hier kann schon startposition mit reingenommen werden bei Positionen. dann muss das nicht bei searchscenemanager passieren
         TargetHandler.Connection ret = new TargetHandler.Connection();
         ret.Name = t.Name;
         ret.PosX = t.PosX;
