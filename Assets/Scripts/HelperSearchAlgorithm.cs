@@ -35,6 +35,9 @@ public class HelperSearchAlgorithm
         public string toString() {return (this.name + ", " + this.depth + ", (" + values[0] + "," + values[1] + "), " + lookingFor);}
     }
 
+
+
+
     public static List<TargetHandler.Connection> DominoAlgorithm(List<TargetHandler.Connection> connections, TargetHandler.Target target, TargetHandler.StartingPosition startposition)
     {
         List<Domino> notUsed = convertToDominos(connections);   //Convert Connections to Dominos
@@ -46,11 +49,18 @@ public class HelperSearchAlgorithm
         queue.Add(start);                                       //our starting point / first in queue
 
         string targetString = target.Room;                      //in which room we want to be at the end of the path
-
-        int endlessLoopStopper = 0;                             //for safety
         bool targetFound = false;
+
+        if(start.lookingFor == targetString)                    // incase the user is in the same room as the target already (while loop will be skipped)
+        {
+            targetFound = true;
+            used.Add(start);
+        }
+
         while(!(queue.Count == 0) & targetFound == false)       //if queue is empty there are no more dominos to continue (no more compatible Dominos)
         {
+            Debug.Log(targetFound); 
+    
             Domino firstInQueue = queue[0];                     // reference to first element in queue because we dont want to reference the whole list over and over again
             List<Domino> notUsedTMP = copyDominoList(notUsed);  //Deep Copy of the List, which will be iterated over, because we want to change the list during iteration
 
@@ -63,13 +73,17 @@ public class HelperSearchAlgorithm
 
                     foundDom.lookingFor = findLookingFor(firstInQueue.lookingFor, foundDom);    //prepare founddom to be the next element in queue
                     foundDom.depth = firstInQueue.depth + 1;                                    //same
-                    queue.Add(foundDom);                                                        //finally add to queue
 
+                    Debug.Log(foundDom.name); 
                     if(foundDom.lookingFor == targetString)
                     {
                         targetFound = true;                     //IF TARGET IS FOUND THE WHILE LOOP ENDS AND CODE WILL CONTINUE AT THE **************
                         used.Add(firstInQueue);
                         used.Add(foundDom);
+                    }
+                    else 
+                    {
+                        queue.Add(foundDom);                    //finally add to queue
                     }
                 }  
             }
@@ -78,35 +92,33 @@ public class HelperSearchAlgorithm
                 notUsed = notUsedTMP;                               //Basically remove the earlier found dominos from notUsed. its always -> notUsedTMP.Count <= notUsed.Count                
                 queue.Remove(firstInQueue);                         //We dealt with the first in queue so now we remove it
                 used.Add(firstInQueue);                             //And add it to used, which will be later used to backtrack
-
-                endlessLoopStopper++;                               //for safety :)
-                if(endlessLoopStopper == 200) 
-                { 
-                    Debug.Log("endless loop"); 
-                    return null;
-                }
             }
             
         }
-        
+        if(queue.Count == 0 & targetFound == false)
+        {
+            return null;
+        }
                                                                 // ***********************
         List<Domino> path = new List<Domino>();
 
-        used.Reverse();
+        used.Reverse();                                         // for easier backtracking
         Domino tmp = used[0];
-        path.Add(tmp);
+        path.Add(tmp);                                          // last domino before target gets appended to path 
 
-        foreach(Domino d in used)
+        if(used.Count > 1)                                      // because it makes sence 
         {
-            if(isMatching(d.lookingFor, tmp) & (d.depth == (tmp.depth - 1)) & d.depth > 0)
+            foreach(Domino d in used)                           // all the other dominos are appended to path by backtracking
             {
-                path.Add(d);
-                tmp = d;
+                if(isMatching(d.lookingFor, tmp) & (d.depth == (tmp.depth - 1)) & d.depth > 0)
+                {
+                    path.Add(d);
+                    tmp = d;
+                }
             }
         }
 
-        List<TargetHandler.Connection> ret = makeConnectionsPath(path, connections, target);
-        ret.Reverse();
+        List<TargetHandler.Connection> ret = makeConnectionsPath(path, connections, target, startposition); // converts dominos to points and adds the target to the list
         return ret;
     }
 
@@ -159,36 +171,35 @@ public class HelperSearchAlgorithm
         return ret;
     }
 
-    private static List<TargetHandler.Connection> makeConnectionsPath(List<Domino> dominos, List<TargetHandler.Connection> connects, TargetHandler.Target target)
+    private static List<TargetHandler.Connection> makeConnectionsPath(List<Domino> dominos, List<TargetHandler.Connection> connects, TargetHandler.Target target, TargetHandler.StartingPosition start)
     {
+        // maybe just use points instead of connections ?
         List<TargetHandler.Connection> ret = new List<TargetHandler.Connection>();
-        dominos.Reverse();
-
+        ret.Add(convertPointToConnec(target, start));
         foreach(Domino d in dominos)
         {
             foreach(TargetHandler.Connection c in connects)
             {
                 if(d.name == c.Name)
                 {
-                    ret.Add(c);
+                    ret.Add(convertPointToConnec(c, start));
                 }
             }
         }
-        ret.Add(convertTargetToConnec(target));
+        
         return ret;
     }
 
-    private static TargetHandler.Connection convertTargetToConnec(TargetHandler.Target t)
+    private static TargetHandler.Connection convertPointToConnec(TargetHandler.Point t, TargetHandler.StartingPosition start)
     {
-        // hier kann schon startposition mit reingenommen werden bei Positionen. dann muss das nicht bei searchscenemanager passieren
+        // Convert the dominos to points. Later if you wanna you can send the room information (like 'u are now in room xyz')
+        //you need to specify target or connction or change the targethandler class
         TargetHandler.Connection ret = new TargetHandler.Connection();
         ret.Name = t.Name;
-        ret.PosX = t.PosX;
-        ret.PosY = t.PosY;
-        ret.PosZ = t.PosZ;
-        ret.RotY = t.RotY;
-        ret.Room1 = t.Room;
-        ret.Room2 = t.Room;
+        ret.PosX = t.PosX - start.PosX;
+        ret.PosY = t.PosY - start.PosY;
+        ret.PosZ = t.PosZ - start.PosZ;
+        ret.RotY = t.RotY - start.RotY - 90;
         return ret;
     }
 }

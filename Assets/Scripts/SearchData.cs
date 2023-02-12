@@ -48,6 +48,7 @@ public class SearchData
         {
             if(sp.Name == s)
             {
+                //Debug.Log(sp.Name);
                 Startposition = sp;
                 return;
             }

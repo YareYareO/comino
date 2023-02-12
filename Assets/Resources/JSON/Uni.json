@@ -10,6 +10,8 @@
     {"Name":"Toilette_OG", "PosX":5.0, "PosY":4.3, "PosZ":12.0, "RotY":0.0, "Room":"Zwischenraum_OG"}
     ,
     {"Name":"Tisch_mit_Ausblick", "PosX":6.6, "PosY":0.0, "PosZ":20.0, "RotY":45.0, "Room":"Treppenraum_EG"}
+    ,
+    {"Name":"Nirgendswo", "PosX":0.2, "PosY":100.3, "PosZ":9.0, "RotY":0.0, "Room":"Nirgendswoland"}
 ],
 "connections":[
     {"Name":"EingangsbereichtoEB_Treppen", "PosX":0.0, "PosY":0.0, "PosZ":-5.8, "RotY":90.0, "Room1":"Eingangsbereich", "Room2":"EB_Treppen"}

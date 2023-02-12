@@ -22,8 +22,8 @@ public class SearchSceneManager : MonoBehaviour
         foreach(TargetHandler.Connection c in path)
         {
             GameObject GameObj = Instantiate(Resources.Load("RealPoint") as GameObject);
-            GameObj.transform.position = new Vector3(c.PosX-startposition.PosX, c.PosY-startposition.PosY, c.PosZ-startposition.PosZ);
-            GameObj.transform.localEulerAngles = new Vector3(0, c.RotY - 90 -startposition.RotY, 0);
+            GameObj.transform.position = new Vector3(c.PosX, c.PosY, c.PosZ);
+            GameObj.transform.localEulerAngles = new Vector3(0, c.RotY, 0);
             GameObj.name = c.Name;
             gameobjectList.Add(GameObj);
         }
