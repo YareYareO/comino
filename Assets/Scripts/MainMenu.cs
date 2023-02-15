@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
     {
         if(SearchData.Target != null | SearchData.Startposition != null | SearchData.PointList != null)
         {
-            SearchData.Path = HelperSearchAlgorithm.DominoAlgorithm(SearchData.PointList.connections, SearchData.Target, SearchData.Startposition);
+            SearchAlgorithm algorithm = new SearchAlgorithm();
+
+            SearchData.Path = algorithm.DominoAlgorithm();
             if(SearchData.Path == null)
             {
                 Debug.Log("Target could not be found. It is not accessible.");

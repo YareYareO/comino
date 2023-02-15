@@ -597,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5646479f0e70a41a4816fc3bfb0b556d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ARCamera: {fileID: 0}
 --- !u!4 &1495303551
 Transform:
   m_ObjectHideFlags: 0

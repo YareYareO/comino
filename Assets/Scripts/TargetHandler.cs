@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetHandler : MonoBehaviour
 {
     [System.Serializable]
-    public abstract class Point
+    public class Point
     {
         public string Name;
         public float PosX;

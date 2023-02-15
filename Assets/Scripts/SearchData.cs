@@ -55,7 +55,7 @@ public class SearchData
         }
     }
 
-    public static List<TargetHandler.Connection> Path { get; set;}
+    public static List<TargetHandler.Point> Path { get; set;}
 
     //SPÄTER EINFÜGEN bei neuer chosenenvironment werden auch die anderen werte gelöscht (target startposition path)
 

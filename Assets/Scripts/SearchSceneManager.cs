@@ -17,9 +17,9 @@ public class SearchSceneManager : MonoBehaviour
         }
 
         TargetHandler.StartingPosition startposition = SearchData.Startposition;
-        List<TargetHandler.Connection> path = SearchData.Path;
+        List<TargetHandler.Point> path = SearchData.Path;
 
-        foreach(TargetHandler.Connection c in path)
+        foreach(TargetHandler.Point c in path)
         {
             GameObject GameObj = Instantiate(Resources.Load("RealPoint") as GameObject);
             GameObj.transform.position = new Vector3(c.PosX, c.PosY, c.PosZ);
