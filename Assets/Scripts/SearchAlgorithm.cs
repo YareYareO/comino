@@ -15,6 +15,7 @@ public class SearchAlgorithm
     string target_room_name;
     bool is_target_found;
     List<TargetHandler.Point> quickest_path;
+    List<Domino.Stone> unused_stones;
 
     public SearchAlgorithm()
     {
@@ -28,6 +29,7 @@ public class SearchAlgorithm
         target_room_name = chosen_target.Room;      //in which room we want to be at the end of the path
         is_target_found = false;
         quickest_path = new List<TargetHandler.Point>();
+        unused_stones = convertToDominos(all_connections);   //Convert Connections to Dominos
     }
 
     public List<TargetHandler.Point> DominoAlgorithm()
@@ -73,22 +75,21 @@ public class SearchAlgorithm
     // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     private void LookForTarget()
     {
-        List<Domino.Stone> unused_stones = convertToDominos(all_connections);   //Convert Connections to Dominos
         while(isLookingForTarget())       //if queue is empty there are no more dominos to continue (no more compatible Dominos)
         {
             Domino.Stone firstInQueue = queued_stones[0];                     // reference to first element in queue because we dont want to reference the whole list over and over again
-            List<Domino.Stone> reduced_unused_stones = copyDominoList(unused_stones);  //Deep Copy of the List, which will be iterated over, because we want to change the list during iteration
+            List<Domino.Stone> current_found_stones = new List<Domino.Stone>();  //Deep Copy of the List, which will be iterated over, because we want to change the list during iteration
 
             foreach(Domino.Stone stone in unused_stones)                      //every nonused Domino
             {
                 if(isMatching(firstInQueue.lookingFor, stone))               //every Domino which is compatible with the first in queue
                 {
                     Domino.Stone found_stone = prepareStone(stone, firstInQueue);   //copy of Domino because we dont want to (cant) change the original array notUsed
-                    reduced_unused_stones.Remove(stone);                        //remove the domino from the copy of notused
+                    current_found_stones.Add(stone);                        
 
                     if(found_stone.lookingFor == target_room_name)
                     {
-                        setTargetFoundToTrue();                     //IF TARGET IS FOUND THE WHILE LOOP ENDS AND CODE WILL CONTINUE AT THE **************
+                        setTargetFoundToTrue();                    
                         addStoneToUsedStones(firstInQueue);
                         addStoneToUsedStones(found_stone);
                     }
@@ -100,7 +101,7 @@ public class SearchAlgorithm
             }
             if(is_target_found == false)
             {
-                unused_stones = reduced_unused_stones;                      //Basically remove the earlier found dominos from notUsed. its always -> notUsedTMP.Count <= notUsed.Count                
+                reduceUnusedStones(current_found_stones);     //remove the earlier found dominos from notUsed.             
                 queued_stones.Remove(firstInQueue);                         //We dealt with the first in queue so now we remove it
                 addStoneToUsedStones(firstInQueue);                             //And add it to used, which will be later used to backtrack
             }
@@ -125,15 +126,12 @@ public class SearchAlgorithm
         return (!(queued_stones.Count == 0) & is_target_found == false);
     }
 
-    private List<Domino.Stone> copyDominoList(List<Domino.Stone> toCopy)
+    private void reduceUnusedStones(List<Domino.Stone> reduceByTheseStones)
     {
-        // This exists because of "collection was modified" error. We need a copy for the foreach loop to work
-        List<Domino.Stone> ret = new List<Domino.Stone>();
-        foreach(Domino.Stone d in toCopy)
+        foreach(Domino.Stone reducingStone in reduceByTheseStones)
         {
-            ret.Add(d);
-        }
-        return ret;
+            unused_stones.Remove(reducingStone);
+        } 
     }
 
     private bool isMatching(string queueDomLF, Domino.Stone notUsedDom)
