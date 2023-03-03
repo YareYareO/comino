@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/ProceedButtonStyle.uss?fileID=7433441132597879392&amp;guid=87c660d49a17f90bdb203cdfc798ccf6&amp;type=3#ProceedButtonStyle" />
+    <Style src="project://database/Assets/ReturnButtonStyle.uss?fileID=7433441132597879392&amp;guid=66b72bf49bcc9cab5ad1db5551a59a3b&amp;type=3#ReturnButtonStyle" />
+    <ui:VisualElement style="flex-grow: 1; background-color: rgb(48, 84, 87);">
+        <ui:VisualElement name="ListContainer" style="flex-grow: 1;" />
+        <ui:VisualElement name="ButtonContainer" style="justify-content: space-around; flex-basis: 20%; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+            <ui:Button text="Reset" display-tooltip-when-elided="true" enable-rich-text="false" name="ResetButton" class="button return" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" enable-rich-text="false" name="BackButton" class="button return" />
+            <ui:Button text="Proceed" display-tooltip-when-elided="true" name="ProceedButton" enable-rich-text="false" class="button proceed" style="height: 70%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

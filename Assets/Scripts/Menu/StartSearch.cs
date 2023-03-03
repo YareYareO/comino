@@ -6,9 +6,9 @@ using System.IO;
 using System;
 using System.Globalization;
 
-public class MainMenu : MonoBehaviour
+public class StartSearch
 {
-    public void StartSearch()
+    public void StartSearching()
     {
         if(SearchData.Target != null | SearchData.Startposition != null | SearchData.PointList != null)
         {
