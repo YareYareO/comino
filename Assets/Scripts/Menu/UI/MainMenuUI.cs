@@ -5,7 +5,7 @@ using System;
 public class MainMenuUI : MonoBehaviour
 {
     State state;
-    VisualElement root;
+    static VisualElement root;
 
     private void OnEnable()
     {
@@ -94,6 +94,22 @@ public class MainMenuUI : MonoBehaviour
     {
         var listview = root.Q<VisualElement>("ContentList");
         root.Q<VisualElement>("ListContainer").Remove(listview);
+    }
+
+    public static void CreateErrorMessage(){
+        Label notFoundMessage = new Label();
+        notFoundMessage.text = "The Target could not be found, try again or something else.";
+        notFoundMessage.name = "NotFoundMessage";
+        root.Q<VisualElement>("AllContainer").Add(notFoundMessage);
+    }
+
+    public static void CleanErrorMessage(){
+        if(root.Q<VisualElement>("NotFoundMessage") != null)
+        {
+            var message = root.Q<VisualElement>("NotFoundMessage");
+            root.Q<VisualElement>("AllContainer").Remove(message);
+        }
+
     }
 
 }

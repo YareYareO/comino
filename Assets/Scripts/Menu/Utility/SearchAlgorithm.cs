@@ -36,13 +36,13 @@ public class SearchAlgorithm
     {
         queued_stones.Add(start_stone);     //our starting point / first in queue
 
-        ifTargetIsInStartingRoom();     // will alter used_stones and set is_target_found if requirements are met
+        isTargetInStartingRoom();     // will alter used_stones and set is_target_found if requirements are met
 
         LookForTarget();    // will alter used_stones
         
         if(isTargetNotFindable())
         {
-            return null;
+            throw new TargetNotFoundExceptionException("The Target could not be found.");
         }
 
         List<Domino.Stone> path_as_dominos = buildPathAsDominos();
@@ -52,7 +52,7 @@ public class SearchAlgorithm
     }
 
     // \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-    private void ifTargetIsInStartingRoom() 
+    private void isTargetInStartingRoom() 
     {
         // incase the user is in the same room as the target already
         if(start_stone.lookingFor == target_room_name)                    

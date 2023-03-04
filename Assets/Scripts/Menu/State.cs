@@ -30,6 +30,7 @@ public class State
     public void SetState(int wantedState)
     {
         CurrentState = wantedState;
+        MainMenuUI.CleanErrorMessage();
     }
 
     private void setSearchData(string value)

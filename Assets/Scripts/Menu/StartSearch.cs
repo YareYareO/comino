@@ -10,21 +10,15 @@ public class StartSearch
 {
     public void StartSearching()
     {
-        if(SearchData.Target != null | SearchData.Startposition != null | SearchData.PointList != null)
+        SearchAlgorithm algorithm = new SearchAlgorithm();
+        try
         {
-            SearchAlgorithm algorithm = new SearchAlgorithm();
-
             SearchData.Path = algorithm.DominoAlgorithm();
-            if(SearchData.Path == null)
-            {
-                Debug.Log("Target could not be found. It is not accessible.");
-            }
-            else
-            {
-                SceneManager.LoadScene("Search");
-            }
+            SceneManager.LoadScene("Search");
         }
-        else { Debug.Log("Werte sind Null");}
+        catch (TargetNotFoundExceptionException)
+        {
+            MainMenuUI.CreateErrorMessage();
+        }
     }
-
 }
