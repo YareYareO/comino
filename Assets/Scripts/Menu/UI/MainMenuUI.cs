@@ -6,19 +6,22 @@ public class MainMenuUI : MonoBehaviour
 {
     State state;
     static VisualElement root;
+    Button proceedButton;
 
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         
-        Button proceedButton = root.Q<Button>("ProceedButton");
+        proceedButton = root.Q<Button>("ProceedButton");
         Button resetButton = root.Q<Button>("ResetButton");
         Button backButton = root.Q<Button>("BackButton");
 
         state = State.GetInstance();
 
         resetButton.clicked += () => state.SetState(0);
+        resetButton.clicked += () => destroyList();
         backButton.clicked += () => state.SetState(state.CurrentState - 1);
+        backButton.clicked += () => destroyList();
 
         proceedButton.clicked += () => chooseList();
 
@@ -50,6 +53,7 @@ public class MainMenuUI : MonoBehaviour
         if(currentState < 3)
         {
             createListUI(currentList);
+            setVisibilityProceedButton(false);
         }
     }
 
@@ -62,8 +66,22 @@ public class MainMenuUI : MonoBehaviour
 
         var listView = new ListView(ListOfNames, itemHeight, makeItem, bindItem);
         listView.name = "ContentList";
+        listView.AddToClassList("list");
 
         root.Q<VisualElement>("ListContainer").Add(listView);
+    }
+
+    private void setVisibilityProceedButton(bool wantToBeVisible)
+    {
+        if(wantToBeVisible)
+        {
+            proceedButton.style.visibility = Visibility.Visible;
+        }
+        else
+        {
+            proceedButton.style.visibility = Visibility.Hidden;
+        }
+        
     }
 
 
@@ -71,6 +89,7 @@ public class MainMenuUI : MonoBehaviour
     {
         Button btn = new Button();
         btn.clicked += () => listItemClicked(btn.text);
+        btn.AddToClassList("listitem");
         return btn;
     }
 
@@ -94,6 +113,7 @@ public class MainMenuUI : MonoBehaviour
     {
         var listview = root.Q<VisualElement>("ContentList");
         root.Q<VisualElement>("ListContainer").Remove(listview);
+        setVisibilityProceedButton(true);
     }
 
     public static void CreateErrorMessage(){

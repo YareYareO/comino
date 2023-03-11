@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "646038880627",
+    "project_id": "comino-8525d",
+    "storage_bucket": "comino-8525d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646038880627:android:13d807b18daac239328506",
+        "android_client_info": {
+          "package_name": "com.comino.firebasedb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "646038880627-fkhl6c4764rk44is3t1hnvg4h81tnfl7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAByFtNroGr0DiTbJ4-lEmHnKJ54ioFeS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "646038880627-fkhl6c4764rk44is3t1hnvg4h81tnfl7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
