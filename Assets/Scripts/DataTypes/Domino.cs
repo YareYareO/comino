@@ -12,7 +12,7 @@ namespace Domino
         public string[] values;
         public string lookingFor;
 
-        public Stone(TargetHandler.Connection connection)
+        public Stone(Connection connection)
         {
             this.name = connection.Name;
             this.depth = -1;
@@ -21,7 +21,7 @@ namespace Domino
             this.values[1] = connection.Room2;
             this.lookingFor = "";
         } 
-        public Stone(TargetHandler.Target target)
+        public Stone(Target target)
         {
             this.name = target.Name;
             this.depth = 0;

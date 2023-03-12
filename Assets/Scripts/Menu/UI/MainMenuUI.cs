@@ -4,38 +4,45 @@ using System;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public FirebaseManager db;
     State state;
-    static VisualElement root;
+<<<<<<< HEAD
+<<<<<<< HEAD
+    private VisualElement root;
     Button proceedButton;
+    public StartSearch search;
+=======
+    static VisualElement root;
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
+=======
+    static VisualElement root;
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
 
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
         
-        proceedButton = root.Q<Button>("ProceedButton");
+        Button proceedButton = root.Q<Button>("ProceedButton");
         Button resetButton = root.Q<Button>("ResetButton");
         Button backButton = root.Q<Button>("BackButton");
 
         state = State.GetInstance();
 
         resetButton.clicked += () => state.SetState(0);
-        resetButton.clicked += () => destroyList();
         backButton.clicked += () => state.SetState(state.CurrentState - 1);
-        backButton.clicked += () => destroyList();
 
         proceedButton.clicked += () => chooseList();
-
     }
 
-    private void chooseList()
+    private async void chooseList()
     {
         int currentState = state.CurrentState;
-        string[] currentList = {"nothing"}; // somehow get rid of this
+        string[] currentList = {"nothing"}; 
         
         switch(currentState)
         {
             case 0:
-                currentList = MenuUtility.GetEnvironments();
+                currentList = await FirebaseManager.DB.RetrieveMapNames();
                 break;
             case 1: 
                 currentList = MenuUtility.GetStartingpositions();
@@ -43,8 +50,7 @@ public class MainMenuUI : MonoBehaviour
             case 2:
                 currentList = MenuUtility.GetGoals();
                 break;
-            case 3: 
-                StartSearch search = new StartSearch();
+            case 3:
                 search.StartSearching();
                 break;
         }
@@ -53,7 +59,6 @@ public class MainMenuUI : MonoBehaviour
         if(currentState < 3)
         {
             createListUI(currentList);
-            setVisibilityProceedButton(false);
         }
     }
 
@@ -66,11 +71,12 @@ public class MainMenuUI : MonoBehaviour
 
         var listView = new ListView(ListOfNames, itemHeight, makeItem, bindItem);
         listView.name = "ContentList";
-        listView.AddToClassList("list");
 
         root.Q<VisualElement>("ListContainer").Add(listView);
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     private void setVisibilityProceedButton(bool wantToBeVisible)
     {
         if(wantToBeVisible)
@@ -83,20 +89,21 @@ public class MainMenuUI : MonoBehaviour
         }
         
     }
-
+=======
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
+=======
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
 
     private Button createClickableButton()
     {
         Button btn = new Button();
         btn.clicked += () => listItemClicked(btn.text);
-        btn.AddToClassList("listitem");
         return btn;
     }
 
 
     private void listItemClicked(string buttonText)
     {
-        Debug.Log(buttonText);
         proceedToState(buttonText);
         destroyList();
     }
@@ -108,12 +115,18 @@ public class MainMenuUI : MonoBehaviour
         state.Proceed(proceedingState, value);
     }
 
+    private bool thereIsAList()
+    {
+        return (root.Q<VisualElement>("ListContainer").childCount != 0);
+    }
 
     private void destroyList()
     {
+<<<<<<< HEAD
+        if( thereIsAList() )
+=======
         var listview = root.Q<VisualElement>("ContentList");
         root.Q<VisualElement>("ListContainer").Remove(listview);
-        setVisibilityProceedButton(true);
     }
 
     public static void CreateErrorMessage(){
@@ -125,11 +138,14 @@ public class MainMenuUI : MonoBehaviour
 
     public static void CleanErrorMessage(){
         if(root.Q<VisualElement>("NotFoundMessage") != null)
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
         {
-            var message = root.Q<VisualElement>("NotFoundMessage");
-            root.Q<VisualElement>("AllContainer").Remove(message);
+            var listview = root.Q<VisualElement>("ContentList");
+            root.Q<VisualElement>("ListContainer").Remove(listview);
+            setVisibilityProceedButton(true);
         }
-
     }
+
+    
 
 }

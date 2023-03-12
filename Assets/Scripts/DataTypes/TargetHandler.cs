@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetHandler : MonoBehaviour
-{
+//public class TargetHandler : MonoBehaviour
+//{
     [System.Serializable]
     public class Point
     {
@@ -58,4 +58,4 @@ public class TargetHandler : MonoBehaviour
         }
     }
 
-}
+//}

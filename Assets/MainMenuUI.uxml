@@ -1,14 +1,31 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <Style src="project://database/Assets/ProceedButtonStyle.uss?fileID=7433441132597879392&amp;guid=87c660d49a17f90bdb203cdfc798ccf6&amp;type=3#ProceedButtonStyle" />
-    <Style src="project://database/Assets/ReturnButtonStyle.uss?fileID=7433441132597879392&amp;guid=66b72bf49bcc9cab5ad1db5551a59a3b&amp;type=3#ReturnButtonStyle" />
-    <Style src="project://database/Assets/ListItemStyle.uss?fileID=7433441132597879392&amp;guid=86f09575a8ab0b74da0a9bf4e7355095&amp;type=3#ListItemStyle" />
-    <Style src="project://database/Assets/ListStyle.uss?fileID=7433441132597879392&amp;guid=9b85d1e30522103ecbecb191a28302d4&amp;type=3#ListStyle" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <Style src="project://database/Assets/Styles/ProceedButtonStyle.uss?fileID=7433441132597879392&amp;guid=87c660d49a17f90bdb203cdfc798ccf6&amp;type=3#ProceedButtonStyle" />
+    <Style src="project://database/Assets/Styles/ReturnButtonStyle.uss?fileID=7433441132597879392&amp;guid=66b72bf49bcc9cab5ad1db5551a59a3b&amp;type=3#ReturnButtonStyle" />
+    <Style src="project://database/Assets/Styles/ListItemStyle.uss?fileID=7433441132597879392&amp;guid=86f09575a8ab0b74da0a9bf4e7355095&amp;type=3#ListItemStyle" />
+    <Style src="project://database/Assets/Styles/ListStyle.uss?fileID=7433441132597879392&amp;guid=9b85d1e30522103ecbecb191a28302d4&amp;type=3#ListStyle" />
     <ui:VisualElement name="AllContainer" style="flex-grow: 1; background-color: rgb(44, 51, 51);">
         <ui:VisualElement name="ListContainer" style="flex-grow: 0; align-items: center; justify-content: flex-start; width: 100%; height: 80%; flex-shrink: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0;" />
         <ui:VisualElement name="ButtonContainer" style="justify-content: space-around; flex-basis: 20%; align-items: center; flex-direction: row; flex-wrap: nowrap; width: 100%; height: 20%; flex-shrink: 0;">
-            <ui:Button text="Reset" display-tooltip-when-elided="true" enable-rich-text="false" name="ResetButton" class="button return" style="background-color: rgb(165, 201, 202); font-size: 14px; -unity-font-style: bold; letter-spacing: -2px; color: rgba(44, 51, 51, 255);" />
-            <ui:Button text="Back" display-tooltip-when-elided="true" enable-rich-text="false" name="BackButton" class="button return" style="background-color: rgb(165, 201, 202); -unity-font-style: bold; -unity-font: resource(&apos;FlatSkin/Font/Roboto-Bold&apos;); letter-spacing: -2px; font-size: 14px; -unity-text-outline-color: rgb(44, 51, 51); text-shadow: 0 0 0 rgb(44, 51, 51); color: rgba(44, 51, 51, 255);" />
+            <ui:Button text="Reset" display-tooltip-when-elided="true" enable-rich-text="false" name="ResetButton" class="button return" style="background-color: rgb(165, 201, 202); font-size: 14px; -unity-font-style: bold; letter-spacing: -2px; color: rgb(44, 51, 51);" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" enable-rich-text="false" name="BackButton" class="button return" style="background-color: rgb(165, 201, 202); -unity-font-style: bold; -unity-font: resource(&apos;FlatSkin/Font/Roboto-Bold&apos;); letter-spacing: -2px; font-size: 14px; -unity-text-outline-color: rgb(44, 51, 51); text-shadow: 0 0 0 rgb(44, 51, 51); color: rgb(44, 51, 51);" />
             <ui:Button text="Proceed" display-tooltip-when-elided="false" name="ProceedButton" enable-rich-text="false" class="button proceed" style="height: 70%; background-color: rgb(231, 246, 242); -unity-font: resource(&apos;FlatSkin/Font/Roboto-Bold&apos;); color: rgb(44, 51, 51); -unity-font-style: bold; -unity-text-outline-color: rgb(44, 51, 51); font-size: 30px; text-shadow: 1px 1px 0 rgba(44, 51, 51, 0.09); letter-spacing: -2px; border-top-left-radius: 30px; border-bottom-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; visibility: visible; display: flex; overflow: hidden;" />
+=======
+=======
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
+    <Style src="project://database/Assets/ProceedButtonStyle.uss?fileID=7433441132597879392&amp;guid=87c660d49a17f90bdb203cdfc798ccf6&amp;type=3#ProceedButtonStyle" />
+    <Style src="project://database/Assets/ReturnButtonStyle.uss?fileID=7433441132597879392&amp;guid=66b72bf49bcc9cab5ad1db5551a59a3b&amp;type=3#ReturnButtonStyle" />
+    <ui:VisualElement name="AllContainer" style="flex-grow: 1; background-color: rgb(48, 84, 87);">
+        <ui:VisualElement name="ListContainer" style="flex-grow: 1;" />
+        <ui:VisualElement name="ButtonContainer" style="justify-content: space-around; flex-basis: 20%; align-items: center; flex-direction: row; flex-wrap: nowrap;">
+            <ui:Button text="Reset" display-tooltip-when-elided="true" enable-rich-text="false" name="ResetButton" class="button return" />
+            <ui:Button text="Back" display-tooltip-when-elided="true" enable-rich-text="false" name="BackButton" class="button return" />
+            <ui:Button text="Proceed" display-tooltip-when-elided="true" name="ProceedButton" enable-rich-text="false" class="button proceed" style="height: 70%;" />
+<<<<<<< HEAD
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
+=======
+>>>>>>> parent of b11f381 (Ui aufgeraeumt)
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

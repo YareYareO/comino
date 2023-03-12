@@ -16,10 +16,10 @@ public class SearchSceneManager : MonoBehaviour
             ARCamera = GameObject.Find("AR Camera");
         }
 
-        TargetHandler.StartingPosition startposition = SearchData.Startposition;
-        List<TargetHandler.Point> path = SearchData.Path;
+        StartingPosition startposition = SearchData.Startposition;
+        List<Point> path = SearchData.Path;
 
-        foreach(TargetHandler.Point c in path)
+        foreach(Point c in path)
         {
             GameObject GameObj = Instantiate(Resources.Load("RealPoint") as GameObject);
             GameObj.transform.position = new Vector3(c.PosX, c.PosY, c.PosZ);

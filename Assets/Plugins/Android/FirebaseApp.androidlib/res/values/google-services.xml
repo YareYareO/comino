@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://comino-8525d-default-rtdb.europe-west1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">646038880627</string>
+  <string name="google_storage_bucket" translatable="false">comino-8525d.appspot.com</string>
+  <string name="project_id" translatable="false">comino-8525d</string>
+  <string name="google_api_key" translatable="false">AIzaSyAByFtNroGr0DiTbJ4-lEmHnKJ54ioFeS8</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAByFtNroGr0DiTbJ4-lEmHnKJ54ioFeS8</string>
+  <string name="google_app_id" translatable="false">1:646038880627:android:13d807b18daac239328506</string>
+  <string name="default_web_client_id" translatable="false">646038880627-fkhl6c4764rk44is3t1hnvg4h81tnfl7.apps.googleusercontent.com</string>
+</resources>

@@ -30,7 +30,7 @@ public class State
     public void SetState(int wantedState)
     {
         CurrentState = wantedState;
-        MainMenuUI.CleanErrorMessage();
+        UIMessage.CleanErrorMessage();
     }
 
     private void setSearchData(string value)
@@ -41,12 +41,13 @@ public class State
                 SearchData.ChosenEnvironment = value;
                 break;
             case 1: 
-                SearchData.setStartPFromString(value);
+                SearchData.setStartPFromString(value); 
                 break;
             case 2: 
                 SearchData.setTargetFromString(value);
                 break; 
         }
+        Debug.Log(value);
     }
 
     private void updateUI()

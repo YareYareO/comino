@@ -5,16 +5,16 @@ using System;
 
 public class SearchAlgorithm
 {
-    List<TargetHandler.Connection> all_connections;
-    TargetHandler.Target chosen_target;
-    TargetHandler.StartingPosition chosen_start;
+    List<Connection> all_connections;
+    Target chosen_target;
+    StartingPosition chosen_start;
 
     List<Domino.Stone> used_stones;
     List<Domino.Stone> queued_stones;
     Domino.Stone start_stone; 
     string target_room_name;
     bool is_target_found;
-    List<TargetHandler.Point> quickest_path;
+    List<Point> quickest_path;
     List<Domino.Stone> unused_stones;
 
     public SearchAlgorithm()
@@ -28,11 +28,11 @@ public class SearchAlgorithm
         start_stone = new Domino.Stone(chosen_start);
         target_room_name = chosen_target.Room;      //in which room we want to be at the end of the path
         is_target_found = false;
-        quickest_path = new List<TargetHandler.Point>();
+        quickest_path = new List<Point>();
         unused_stones = convertToDominos(all_connections);   //Convert Connections to Dominos
     }
 
-    public List<TargetHandler.Point> DominoAlgorithm()
+    public List<Point> DominoAlgorithm()
     {
         queued_stones.Add(start_stone);     //our starting point / first in queue
 
@@ -109,11 +109,11 @@ public class SearchAlgorithm
         return;
     }
 
-    private List<Domino.Stone> convertToDominos(List<TargetHandler.Connection> connections)
+    private List<Domino.Stone> convertToDominos(List<Connection> connections)
     {
         // Self explanatory
         List<Domino.Stone> dominos = new List<Domino.Stone>();
-        foreach(TargetHandler.Connection connection in connections)
+        foreach(Connection connection in connections)
         {
             Domino.Stone stone = new Domino.Stone(connection);
             dominos.Add(stone);
@@ -211,7 +211,7 @@ public class SearchAlgorithm
     {
         foreach(Domino.Stone stone in dominos)
         {
-            foreach(TargetHandler.Point connection in all_connections)
+            foreach(Point connection in all_connections)
             {
                 if(stone.name == connection.Name)
                 {
@@ -221,9 +221,9 @@ public class SearchAlgorithm
         }
     }
 
-    private TargetHandler.Point calculatePointAttributes(TargetHandler.Point t)
+    private Point calculatePointAttributes(Point t)
     {
-        TargetHandler.Point ret = new TargetHandler.Point();
+        Point ret = new Point();
         ret.Name = t.Name;
         ret.PosX = t.PosX - chosen_start.PosX;
         ret.PosY = t.PosY - chosen_start.PosY;

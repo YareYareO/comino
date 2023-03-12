@@ -11,8 +11,13 @@ public class SearchData
         set 
         {
             chosenEnvironment = value;
-            WholeJson = (Resources.Load<TextAsset>("JSON/" + chosenEnvironment).text);
+            setWholeJson(chosenEnvironment);
         }
+    }
+
+    private async static void setWholeJson(string env)
+    {
+        WholeJson = await FirebaseManager.DB.RetrieveMap(env);
     }
 
     private static string wholeJson;
@@ -22,16 +27,16 @@ public class SearchData
         set 
         {
             wholeJson = value;
-            PointList = JsonUtility.FromJson<TargetHandler.PointList>(wholeJson);
+            PointList = JsonUtility.FromJson<PointList>(wholeJson);
         }
     }
 
-    public static TargetHandler.PointList PointList { get; set;}
+    public static PointList PointList { get; set;}
 
-    public static TargetHandler.Target Target { get; set;}
+    public static Target Target { get; set;}
     public static void setTargetFromString(string s)
     {
-        foreach(TargetHandler.Target t in PointList.targets)
+        foreach(Target t in PointList.targets)
         {
             if(t.Name == s)
             {
@@ -41,10 +46,10 @@ public class SearchData
         }
     }
 
-    public static TargetHandler.StartingPosition Startposition { get; set;}
+    public static StartingPosition Startposition { get; set;}
     public static void setStartPFromString(string s)
     {
-        foreach(TargetHandler.StartingPosition sp in PointList.startingpositions)
+        foreach(StartingPosition sp in PointList.startingpositions)
         {
             if(sp.Name == s)
             {
@@ -55,7 +60,7 @@ public class SearchData
         }
     }
 
-    public static List<TargetHandler.Point> Path { get; set;}
+    public static List<Point> Path { get; set;}
 
     //SPÄTER EINFÜGEN bei neuer chosenenvironment werden auch die anderen werte gelöscht (target startposition path)
 
